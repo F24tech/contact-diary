@@ -1,0 +1,15 @@
+.home-page {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    gap: 10px;
+}
+
+.btn {
+    background: var(--forth-color);
+    color: white;
+    padding: 0.5em;
+    border-radius: 7px;
+    text-align: center;
+    font-weight: 600;
+}

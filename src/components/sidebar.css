@@ -1,0 +1,68 @@
+.sidebar {
+    width: 30%;
+    background-color: var(--primary-color);
+    padding: 0.6rem;
+    height: 100%;
+    position: fixed;
+}
+
+.brand {
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.7px solid var(--secondary-color);
+}
+
+.search-box {
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    background-color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-box input {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.search-box .fa-magnifying-glass {
+    color: var(--primary-color);
+}
+
+.search-box:focus {
+    border: 1px solid var(--primary-color);
+}
+
+.contact-card {
+    margin-top: 2rem;
+    height: 75vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.contact-card .card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 1px 1px 1px white;
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 0.3rem;
+}
+.contact-card .card:hover {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    transition: 300ms all;
+}
+
+.contact-card img {
+    border-radius: 60%;
+    height: 3rem;
+    width: 3rem;
+}
+.contact-card h2 {
+    font-size: 1rem;
+}
