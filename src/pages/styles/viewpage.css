@@ -1,0 +1,50 @@
+.view-page {
+    display: grid;
+    place-content: center;
+    height: 100%;
+}
+
+.add-new-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.add-new-btn button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.view-contact img {
+    width: 8rem;
+    border-radius: 100%;
+}
+
+.view-contact {
+    display: flex;
+    gap: 2rem;
+}
+
+.view-contact h2 {
+    font-weight: 400;
+    font-size: 21px;
+}
+
+.action-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.action-button button {
+    outline: none;
+    background-color: var(--fifth-color);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.action-button button {
+    background-color: var(--forth-color);
+}
