@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './sidebar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Sidebar() {
+    const [contacts, setContacts] = useState({})
+    const navigate = useNavigate()
+
+
+
+    const getContacts = () => {
+        if (typeof Storage !== 'undefined') {
+            const keys = Object.keys(localStorage)
+
+            const temp = {}
+
+            keys.map(key =>
+                temp[key] = JSON.parse(localStorage.getItem(key))
+            )
+
+
+
+
+            setContacts(temp)
+
+        }
+    }
+
+    useEffect(() => {
+        getContacts()
+    }, [])
+
+
+    console.log(contacts)
+
+
+
+
+
     return (
         <div className='sidebar'  >
 
@@ -22,90 +56,18 @@ function Sidebar() {
             <div className='contact-card' >
 
                 {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
+                {Object.keys(contacts).map((key, index) =>
+                    <div className='card'
+                        key={index}
+                        onClick={() => navigate(`/${key}`)}
+                    >
+                        <div>
+                            <img src={contacts[key].profileUrl} alt={contacts[key].name} height={100} width={100} />
+                        </div>
+                        <h2>{contacts[key].name}</h2>
                     </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}  {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
-                {/* Card */}
-                {/* Card */}
-                <div className='card' >
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" alt="asdf" height={100} width={100} />
-                    </div>
-                    <h2>Mayur Barsagade</h2>
-                </div>
+                )}
+
                 {/* Card */}
 
 
