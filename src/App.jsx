@@ -4,6 +4,7 @@ import ViewPage from './pages/view.page'
 import AddPage from './pages/add.page'
 import EditPage from './pages/edit.page'
 import DeletePage from './pages/delete.page'
+import { Toaster } from 'react-hot-toast'
 
 
 const routers = createBrowserRouter([
@@ -37,6 +38,8 @@ function App() {
   return (
     <>
       <RouterProvider router={routers} />
+      <Toaster />
+
     </>
   )
 }

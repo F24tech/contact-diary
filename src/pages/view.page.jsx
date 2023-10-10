@@ -1,10 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../layout/layout';
 import './styles/viewpage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function ViewPage() {
     const navigate = useNavigate()
+    const params = useParams()
+    const [data, setData] = useState({
+        email: '',
+        name: '',
+        number: '',
+        profileUrl: ''
+    })
+    console.log(params)
+
+
+    // Check localstorage data exists or not 
+    const checkLoacalStorage = (id) => {
+        const checkData = localStorage.getItem(id)
+        if (!checkData)
+            return false
+        return true
+    }
+
+
+
+    useEffect(() => {
+        const { id } = params
+
+
+        const checkIdExists = checkLoacalStorage(id)
+        if (checkIdExists) {
+            const contactDetails = JSON.parse(localStorage.getItem(id))
+            setData(contactDetails)
+        } else {
+            toast.error("Contact not exists")
+            navigate('/')
+        }
+
+    }, [params])
+
+
+
+
     return (
         <Layout>
             {/* Add New */}
@@ -18,14 +57,14 @@ function ViewPage() {
                 <div className="view-contact" >
 
                     <div>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80" />
+                        <img src={data.profileUrl} />
                     </div>
 
                     <div>
                         <div>
-                            <h2>Mayur</h2>
-                            <h2>+91987654321</h2>
-                            <h2>email@email.com</h2>
+                            <h2>{data.name}</h2>
+                            <h2>{data.number}</h2>
+                            <h2>{data.email}</h2>
                         </div>
 
 
