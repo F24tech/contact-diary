@@ -6,7 +6,6 @@ import './styles/homepage.css'
 import Homeimg from '../assets/images/home.png'
 
 function HomePage() {
-    console.log('here')
     return (
         <Layout>
 

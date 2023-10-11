@@ -14,8 +14,6 @@ function ViewPage() {
         number: '',
         profileUrl: ''
     })
-    console.log(params)
-
 
     // Check localstorage data exists or not 
     const checkLoacalStorage = (id) => {
@@ -88,7 +86,7 @@ function ViewPage() {
 
 
                         <div className="action-button" >
-                            <button >Edit</button>
+                            <button onClick={() => navigate(`/edit/${params.id}`)}  >Edit</button>
                             <button onClick={() => onDeleteClick()} >Delete</button>
                         </div>
 

@@ -6,6 +6,8 @@ function Sidebar() {
     const [contacts, setContacts] = useState({})
     const navigate = useNavigate()
 
+    const [search, setSearch] = useState('')
+
 
 
     const getContacts = () => {
@@ -31,7 +33,6 @@ function Sidebar() {
     }, [])
 
 
-    console.log(contacts)
 
 
 
@@ -46,7 +47,7 @@ function Sidebar() {
 
             {/* Search Box */}
             <div className='search-box' >
-                <input type='search' placeholder='Search Contacts' />
+                <input type='search' placeholder='Search Contacts' onChange={(e) => setSearch(e.target.value)} value={search} />
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             {/* Search Box */}
@@ -56,16 +57,23 @@ function Sidebar() {
             <div className='contact-card' >
 
                 {/* Card */}
-                {Object.keys(contacts).map((key, index) =>
-                    <div className='card'
-                        key={index}
-                        onClick={() => navigate(`/${key}`)}
-                    >
-                        <div>
-                            <img src={contacts[key].profileUrl} alt={contacts[key].name} height={100} width={100} />
+                {Object.keys(contacts).map((key, index) => {
+
+                    const lowerCaseSearch = search.toLowerCase()
+
+                    if (contacts[key].name.toLowerCase().includes(lowerCaseSearch) || contacts[key].number.includes(lowerCaseSearch) || contacts[key].email.toLowerCase().includes(lowerCaseSearch)) {
+                        return <div className='card'
+                            key={index}
+                            onClick={() => navigate(`/${key}`)}
+                        >
+                            <div>
+                                <img src={contacts[key].profileUrl} alt={contacts[key].name} height={100} width={100} />
+                            </div>
+                            <h2>{contacts[key].name}</h2>
                         </div>
-                        <h2>{contacts[key].name}</h2>
-                    </div>
+                    }
+                }
+
                 )}
 
                 {/* Card */}

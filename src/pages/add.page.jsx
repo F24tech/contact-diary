@@ -46,7 +46,6 @@ function AddPage() {
             }
         } catch (error) {
             toast.error("Error uploading image")
-            console.error('Error uploading image:', error);
         }
     };
 
