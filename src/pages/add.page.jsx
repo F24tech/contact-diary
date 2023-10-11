@@ -9,6 +9,7 @@ import { AvatarGenerator } from 'random-avatar-generator';
 
 import './styles/addpage.css'
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function AddPage() {
 
@@ -18,6 +19,7 @@ function AddPage() {
         email: '',
 
     })
+    const navigate = useNavigate()
     const [image, setImage] = useState(null);
 
     const handleChange = (e) => {
@@ -74,6 +76,7 @@ function AddPage() {
 
         // Optionally, you can show a success message or redirect the user
         toast.success('Data submitted successfully!');
+        return navigate('/')
     };
 
 

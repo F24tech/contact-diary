@@ -27,8 +27,13 @@
 }
 
 .view-contact h2 {
-    font-weight: 400;
+    /* font-weight: 600; */
     font-size: 21px;
+}
+
+.view-contact h3 {
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .action-button {
@@ -43,8 +48,23 @@
     background-color: var(--fifth-color);
     padding: 0.5rem;
     border-radius: 5px;
+    width: 100%;
+    margin: 4px;
+    cursor: pointer;
 }
 
 .action-button button {
     background-color: var(--forth-color);
+}
+
+.action-button button:hover {
+    opacity: 0.6;
+}
+
+.action-button button:first-child {
+    background-color: var(--secondary-color);
+}
+
+.action-button button:nth-child(2) {
+    background-color: var(--fifth-color);
 }

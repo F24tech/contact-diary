@@ -3,6 +3,7 @@ import Layout from '../layout/layout';
 import './styles/viewpage.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import swal from 'sweetalert';
 
 function ViewPage() {
     const navigate = useNavigate()
@@ -25,7 +26,6 @@ function ViewPage() {
     }
 
 
-
     useEffect(() => {
         const { id } = params
 
@@ -40,6 +40,25 @@ function ViewPage() {
         }
 
     }, [params])
+
+
+
+    const onDeleteClick = () => {
+        swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to delete this contact?",
+            icon: "warning",
+            dangerMode: true,
+        })
+            .then(willDelete => {
+                if (willDelete) {
+                    localStorage.removeItem(params.id)
+                    swal("Deleted!", "Your Contact has been delete", "success");
+                    return navigate('/')
+                }
+            });
+    }
+
 
 
 
@@ -63,14 +82,14 @@ function ViewPage() {
                     <div>
                         <div>
                             <h2>{data.name}</h2>
-                            <h2>{data.number}</h2>
-                            <h2>{data.email}</h2>
+                            <h3>{data.number}</h3>
+                            <h3>{data.email}</h3>
                         </div>
 
 
                         <div className="action-button" >
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button >Edit</button>
+                            <button onClick={() => onDeleteClick()} >Delete</button>
                         </div>
 
                     </div>
